@@ -17,17 +17,19 @@ export default function ReplyCard({ draft }: Props) {
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
-      <div className="bg-violet-50 border-b border-violet-100 px-5 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Mail className="w-5 h-5 text-violet-600" />
-          <h2 className="font-semibold text-violet-800">
+    <div className="bg-white rounded-2xl border border-sage-300/50 shadow-card overflow-hidden">
+      <div className="px-5 py-3.5 flex items-center gap-2.5 border-b bg-accent-50/60 border-accent-100 justify-between">
+        <div className="flex items-center gap-2.5">
+          <div className="w-7 h-7 bg-accent-500 rounded-lg flex items-center justify-center">
+            <Mail className="w-3.5 h-3.5 text-white" />
+          </div>
+          <h2 className="font-semibold text-accent-800">
             Message Back to School
           </h2>
         </div>
         <button
           onClick={handleCopy}
-          className="flex items-center gap-1 text-xs text-violet-600 hover:text-violet-800 transition-colors px-2 py-1 rounded-lg hover:bg-violet-100"
+          className="flex items-center gap-1.5 text-xs font-medium text-accent-600 hover:text-accent-800 transition-colors px-2.5 py-1.5 rounded-lg hover:bg-accent-100"
         >
           {copied ? (
             <>
@@ -43,10 +45,10 @@ export default function ReplyCard({ draft }: Props) {
         </button>
       </div>
       <div className="px-5 py-4">
-        <div className="bg-gray-50 rounded-xl p-4 text-sm text-gray-700 whitespace-pre-line font-mono leading-relaxed">
+        <div className="bg-sage-50 rounded-xl p-4 text-sm text-navy-500 whitespace-pre-line font-mono leading-relaxed border border-sage-200/50">
           {draft}
         </div>
-        <p className="text-xs text-gray-400 mt-2">
+        <p className="text-xs text-sage-400 mt-2.5">
           Review and personalize before sending. Replace [Parent Name] and
           [child name] with your details.
         </p>

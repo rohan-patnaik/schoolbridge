@@ -2,13 +2,13 @@ import { Globe } from "lucide-react";
 
 const LANGUAGES: Record<string, string> = {
   en: "English",
-  es: "Español",
-  zh: "中文",
-  ar: "العربية",
-  hi: "हिन्दी",
-  fr: "Français",
-  vi: "Tiếng Việt",
-  ko: "한국어",
+  es: "Espanol",
+  zh: "Chinese",
+  ar: "Arabic",
+  hi: "Hindi",
+  fr: "French",
+  vi: "Vietnamese",
+  ko: "Korean",
 };
 
 interface Props {
@@ -18,12 +18,12 @@ interface Props {
 
 export default function LanguagePicker({ value, onChange }: Props) {
   return (
-    <div className="flex items-center gap-2">
-      <Globe className="w-4 h-4 text-gray-400" />
+    <div className="flex items-center gap-2 bg-sage-100 rounded-xl px-3 py-1.5">
+      <Globe className="w-4 h-4 text-sage-500" />
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="text-sm border border-gray-200 rounded-lg px-2 py-1.5 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-500"
+        className="text-sm bg-transparent text-navy-600 font-medium focus:outline-none cursor-pointer pr-1"
       >
         {Object.entries(LANGUAGES).map(([code, name]) => (
           <option key={code} value={code}>

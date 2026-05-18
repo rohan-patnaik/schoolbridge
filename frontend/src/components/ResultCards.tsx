@@ -4,7 +4,7 @@ import ActionCard from "./ActionCard";
 import ReplyCard from "./ReplyCard";
 import EvidenceChips from "./EvidenceChips";
 import AudioButton from "./AudioButton";
-import { ArrowLeft, Clock, Zap } from "lucide-react";
+import { ArrowLeft, Clock, Zap, Timer } from "lucide-react";
 
 interface Props {
   response: ProcessNoticeResponse;
@@ -13,9 +13,9 @@ interface Props {
 }
 
 const URGENCY_STYLES = {
-  low: "bg-green-100 text-green-700 border-green-200",
-  medium: "bg-amber-100 text-amber-700 border-amber-200",
-  high: "bg-red-100 text-red-700 border-red-200",
+  low: "bg-green-50 text-green-700 border-green-200",
+  medium: "bg-accent-50 text-accent-700 border-accent-200",
+  high: "bg-red-50 text-red-700 border-red-200",
 };
 
 const URGENCY_LABELS = {
@@ -29,22 +29,20 @@ export default function ResultCards({ response, language, onReset }: Props) {
   const urgency = analysis.urgency as keyof typeof URGENCY_STYLES;
 
   return (
-    <div className="max-w-3xl mx-auto space-y-6">
+    <div className="max-w-3xl mx-auto space-y-5">
+      {/* Top bar */}
       <div className="flex items-center justify-between">
-        <button
-          onClick={onReset}
-          className="flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-700 transition-colors"
-        >
+        <button onClick={onReset} className="inline-flex items-center gap-1.5 text-sm text-navy-300 hover:text-navy-500 transition-colors">
           <ArrowLeft className="w-4 h-4" />
           Analyze another notice
         </button>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
           <span
             className={`text-xs font-medium px-2.5 py-1 rounded-full border ${URGENCY_STYLES[urgency]}`}
           >
             {URGENCY_LABELS[urgency]}
           </span>
-          <span className="text-xs text-gray-400 flex items-center gap-1">
+          <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-sage-100 text-sage-500 flex items-center gap-1">
             <Zap className="w-3 h-3" />
             {analysis.confidence >= 0.8
               ? "High confidence"
@@ -52,23 +50,25 @@ export default function ResultCards({ response, language, onReset }: Props) {
                 ? "Medium confidence"
                 : "Low confidence"}
           </span>
-          <span className="text-xs text-gray-400 flex items-center gap-1">
-            <Clock className="w-3 h-3" />
+          <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-sage-100 text-sage-500 flex items-center gap-1">
+            <Timer className="w-3 h-3" />
             {(processing_time_ms / 1000).toFixed(1)}s
           </span>
         </div>
       </div>
 
+      {/* Deadline banner */}
       {analysis.deadline && (
-        <div className="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 flex items-center gap-2">
-          <Clock className="w-5 h-5 text-amber-600 flex-shrink-0" />
-          <p className="text-sm text-amber-800 font-medium">
+        <div className="bg-accent-50 border border-accent-200 rounded-2xl px-5 py-3 flex items-center gap-2.5">
+          <Clock className="w-5 h-5 text-accent-600 flex-shrink-0" />
+          <p className="text-sm text-accent-800 font-semibold">
             Deadline: {analysis.deadline}
           </p>
         </div>
       )}
 
-      <div className="grid gap-6 md:grid-cols-1">
+      {/* Cards */}
+      <div className="grid gap-5">
         <MeaningCard summary={analysis.summary} audioUrl={audio_url} language={language} />
         <ActionCard
           actions={analysis.required_actions}
@@ -79,10 +79,12 @@ export default function ResultCards({ response, language, onReset }: Props) {
         )}
       </div>
 
+      {/* Evidence */}
       {analysis.evidence.length > 0 && (
         <EvidenceChips evidence={analysis.evidence} />
       )}
 
+      {/* Audio */}
       {audio_url && <AudioButton url={audio_url} />}
     </div>
   );

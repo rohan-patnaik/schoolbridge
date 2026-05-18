@@ -18,7 +18,7 @@ export default function App() {
   return (
     <Layout language={language} onLanguageChange={setLanguage}>
       {state === "idle" && (
-        <div className="space-y-8">
+        <div className="space-y-10">
           <UploadZone onFile={handleFile} />
           <SampleNotices onSelect={handleFile} />
         </div>
@@ -35,15 +35,12 @@ export default function App() {
       )}
 
       {state === "error" && (
-        <div className="max-w-2xl mx-auto text-center space-y-4">
-          <div className="bg-red-50 border border-red-200 rounded-xl p-6">
-            <p className="text-red-700 font-medium">Something went wrong</p>
-            <p className="text-red-600 text-sm mt-1">{error}</p>
+        <div className="max-w-2xl mx-auto text-center space-y-5">
+          <div className="bg-white rounded-2xl border border-red-200 shadow-card p-6 bg-red-50/50">
+            <p className="text-red-700 font-semibold">Something went wrong</p>
+            <p className="text-red-600/80 text-sm mt-1.5">{error}</p>
           </div>
-          <button
-            onClick={reset}
-            className="px-6 py-2 bg-brand-600 text-white rounded-lg hover:bg-brand-700 transition-colors"
-          >
+          <button onClick={reset} className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent-500 text-white rounded-xl font-medium shadow-sm hover:bg-accent-600 transition-all">
             Try Again
           </button>
         </div>

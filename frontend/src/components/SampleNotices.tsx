@@ -98,7 +98,7 @@ export default function SampleNotices({ onSelect }: Props) {
 
   return (
     <div className="max-w-2xl mx-auto">
-      <p className="text-sm font-medium text-gray-500 text-center mb-3">
+      <p className="text-sm font-medium text-sage-500 text-center mb-4">
         Or try a sample notice
       </p>
       <div className="grid gap-3 sm:grid-cols-3">
@@ -106,13 +106,17 @@ export default function SampleNotices({ onSelect }: Props) {
           <button
             key={sample.name}
             onClick={() => handleSelect(sample.text, sample.name)}
-            className="text-left p-4 bg-white border border-gray-200 rounded-xl hover:border-brand-300 hover:shadow-sm transition-all group"
+            className="text-left p-4 bg-white border border-sage-300/50 rounded-2xl
+                       hover:border-accent-300 hover:shadow-card-hover
+                       transition-all duration-200 group"
           >
-            <FileText className="w-5 h-5 text-gray-400 group-hover:text-brand-500 mb-2" />
-            <p className="text-sm font-medium text-gray-700 group-hover:text-brand-700">
+            <div className="w-8 h-8 bg-sage-100 rounded-lg flex items-center justify-center mb-3 group-hover:bg-accent-50 transition-colors">
+              <FileText className="w-4 h-4 text-sage-400 group-hover:text-accent-500 transition-colors" />
+            </div>
+            <p className="text-sm font-semibold text-navy-600 group-hover:text-accent-600 transition-colors">
               {sample.name}
             </p>
-            <p className="text-xs text-gray-400 mt-0.5">
+            <p className="text-xs text-sage-400 mt-1 leading-relaxed">
               {sample.description}
             </p>
           </button>
