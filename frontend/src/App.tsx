@@ -18,10 +18,17 @@ export default function App() {
     process(file, language);
   };
 
+  const handleLanguageChange = (lang: string) => {
+    setLanguage(lang);
+    if (state === "done" || state === "error") {
+      reset();
+    }
+  };
+
   return (
     <Layout
       language={language}
-      onLanguageChange={setLanguage}
+      onLanguageChange={handleLanguageChange}
       dark={dark}
       onToggleDark={toggleDark}
     >
