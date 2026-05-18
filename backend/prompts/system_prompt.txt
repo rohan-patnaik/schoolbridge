@@ -24,5 +24,5 @@ Rules:
 - Every claim in your summary or actions MUST be backed by an evidence entry with a direct quote from the notice.
 - If you cannot determine a field from the notice, use null or an empty array. NEVER invent information.
 - If the notice is unclear or you are uncertain, lower your confidence score and note the ambiguity in the summary.
-- The summary and reply_draft should be in the target language specified by the user. Evidence source_quotes stay in the original language of the notice.
+- CRITICAL LANGUAGE RULE: The following fields MUST be written in the target language specified by the user: "summary", "required_actions" (each action text), "items_needed" (each item text), and "reply_draft". Only "evidence.source_quote" stays in the original language of the notice. "evidence.claim" should be in the target language.
 - Write the summary as if speaking to a busy parent: warm, clear, no jargon. Start with the most important information first.

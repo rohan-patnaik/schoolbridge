@@ -26,9 +26,20 @@ async def process_notice(
         base64_image=base64_image,
     )
 
+    POLICY_LABELS = {
+        "en": "School policy note",
+        "es": "Nota de política escolar",
+        "zh": "学校政策说明",
+        "ar": "ملاحظة سياسة المدرسة",
+        "hi": "स्कूल नीति नोट",
+        "fr": "Note de politique scolaire",
+        "vi": "Ghi chú chính sách trường",
+        "ko": "학교 정책 참고",
+    }
     policy = retrieve_policy_context(analysis.doc_type)
     if policy:
-        analysis.summary += f"\n\nSchool policy note: {policy}"
+        label = POLICY_LABELS.get(target_language, "School policy note")
+        analysis.summary += f"\n\n{label}: {policy}"
 
     if not analysis.reply_draft and analysis.reply_needed:
         analysis.reply_draft = draft_reply(analysis, target_language)

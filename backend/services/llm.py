@@ -25,9 +25,11 @@ def _build_messages(
     if _is_finetuned_model():
         system = (
             "You are SchoolBridge, a school notice analyzer. "
-            "Extract structured information and respond in valid JSON only."
+            "Extract structured information and respond in valid JSON only. "
+            "ALL user-facing text (summary, actions, items_needed, reply_draft, evidence claims) "
+            "MUST be written in the target language specified by the user."
         )
-        user_content = f"Analyze this school notice:\n\n{ocr_text}\n\nTarget language: {lang_name}"
+        user_content = f"Analyze this school notice. Write ALL output fields (summary, actions, items_needed, reply_draft, claims) in {lang_name}.\n\n{ocr_text}"
     else:
         system = _load_prompt("system_prompt.txt")
         extraction = _load_prompt("extraction_prompt.txt")

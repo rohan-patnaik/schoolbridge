@@ -1,6 +1,6 @@
 Analyze this school notice and extract structured information. Respond with ONLY a valid JSON object.
 
-Target language for summary and reply: {{TARGET_LANGUAGE}}
+IMPORTANT: The target language is {{TARGET_LANGUAGE}}. You MUST write ALL of the following fields in {{TARGET_LANGUAGE}}: "summary", every "action" inside "required_actions", every item in "items_needed", "reply_draft", and every "claim" in "evidence". Only "evidence.source_quote" stays in the original notice language.
 
 --- SCHOOL NOTICE ---
 {{NOTICE_TEXT}}
@@ -15,3 +15,4 @@ Example 2 (health/immunization notice):
 {"doc_type":"immunization_reminder","urgency":"high","deadline":"2025-09-01","summary":"Your child needs updated vaccination records before school starts on September 1st. Without them, your child cannot attend class. Contact your doctor or the free clinic on Oak Street to get the shots.","required_actions":[{"action":"Schedule vaccination appointment with your doctor","deadline":"2025-08-25"},{"action":"Submit updated immunization record to the school office","deadline":"2025-09-01"}],"items_needed":["updated immunization record from doctor"],"reply_needed":false,"reply_draft":null,"evidence":[{"claim":"Immunization records required by September 1","source_quote":"All students must have current immunization records on file by September 1, 2025"},{"claim":"Cannot attend without records","source_quote":"Students without complete records will not be permitted to attend classes"}],"confidence":0.92}
 
 Now analyze the notice above and respond with ONLY a JSON object. No markdown, no explanation.
+REMINDER: All user-facing text (summary, actions, items_needed, reply_draft, evidence claims) MUST be in {{TARGET_LANGUAGE}}. Do NOT write them in English unless the target language IS English.
