@@ -26,7 +26,7 @@ export default function LanguagePicker({ value, onChange }: Props) {
         className="text-sm bg-transparent text-navy-600 dark:text-sage-200 font-medium focus:outline-none cursor-pointer pr-1"
       >
         {Object.entries(LANGUAGES).map(([code, name]) => (
-          <option key={code} value={code}>
+          <option key={code} value={code} className="bg-white dark:bg-navy-800 text-navy-600 dark:text-sage-200">
             {name}
           </option>
         ))}
