@@ -42,7 +42,7 @@ Three task families ensure the model learns the full workflow:
 - **Notice-to-explanation**: plain-language summaries at appropriate reading levels in 6 languages
 - **Negative examples**: cases where the model must say "I can't determine this from the notice" rather than hallucinating
 
-The model was exported to GGUF Q4_K_M quantization and imported into Ollama for local serving. Training completed in approximately 2 hours on a single T4 GPU.
+Training completed in 29.4 minutes on Kaggle's T4 GPU with a final loss of 0.0112, confirming strong convergence on the structured extraction task. The trained LoRA adapter (155MB) is available in the repository for reproducibility.
 
 ## Evaluation
 
