@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Mail, Copy, Check } from "lucide-react";
+import { t } from "../i18n/translations";
 
 interface Props {
   draft: string | null;
+  language: string;
 }
 
-export default function ReplyCard({ draft }: Props) {
+export default function ReplyCard({ draft, language }: Props) {
   const [copied, setCopied] = useState(false);
 
   if (!draft) return null;
@@ -24,7 +26,7 @@ export default function ReplyCard({ draft }: Props) {
             <Mail className="w-3.5 h-3.5 text-white" />
           </div>
           <h2 className="font-semibold text-accent-800 dark:text-accent-300">
-            Message Back to School
+            {t(language, "messageBack")}
           </h2>
         </div>
         <button
@@ -34,12 +36,12 @@ export default function ReplyCard({ draft }: Props) {
           {copied ? (
             <>
               <Check className="w-3.5 h-3.5" />
-              Copied!
+              {t(language, "copied")}
             </>
           ) : (
             <>
               <Copy className="w-3.5 h-3.5" />
-              Copy
+              {t(language, "copy")}
             </>
           )}
         </button>
@@ -49,8 +51,7 @@ export default function ReplyCard({ draft }: Props) {
           {draft}
         </div>
         <p className="text-xs text-sage-400 dark:text-sage-500 mt-2.5">
-          Review and personalize before sending. Replace [Parent Name] and
-          [child name] with your details.
+          {t(language, "replyHint")}
         </p>
       </div>
     </div>

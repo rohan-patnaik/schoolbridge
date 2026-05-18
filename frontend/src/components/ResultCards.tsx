@@ -5,6 +5,7 @@ import ReplyCard from "./ReplyCard";
 import EvidenceChips from "./EvidenceChips";
 import AudioButton from "./AudioButton";
 import { ArrowLeft, Clock, Zap, Timer } from "lucide-react";
+import { t } from "../i18n/translations";
 
 interface Props {
   response: ProcessNoticeResponse;
@@ -18,10 +19,10 @@ const URGENCY_STYLES = {
   high: "bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-400 border-red-200 dark:border-red-800/40",
 };
 
-const URGENCY_LABELS = {
-  low: "Low Urgency",
-  medium: "Needs Attention",
-  high: "Action Required",
+const URGENCY_KEYS: Record<string, string> = {
+  low: "urgLow",
+  medium: "urgMed",
+  high: "urgHigh",
 };
 
 export default function ResultCards({ response, language, onReset }: Props) {
@@ -34,21 +35,21 @@ export default function ResultCards({ response, language, onReset }: Props) {
       <div className="flex items-center justify-between">
         <button onClick={onReset} className="inline-flex items-center gap-1.5 text-sm text-navy-300 dark:text-sage-400 hover:text-navy-500 dark:hover:text-sage-200 transition-colors">
           <ArrowLeft className="w-4 h-4" />
-          Analyze another notice
+          {t(language, "analyzeAnother")}
         </button>
         <div className="flex items-center gap-2.5">
           <span
             className={`text-xs font-medium px-2.5 py-1 rounded-full border ${URGENCY_STYLES[urgency]}`}
           >
-            {URGENCY_LABELS[urgency]}
+            {t(language, URGENCY_KEYS[urgency])}
           </span>
           <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-sage-100 dark:bg-navy-600 text-sage-500 dark:text-sage-300 flex items-center gap-1">
             <Zap className="w-3 h-3" />
             {analysis.confidence >= 0.8
-              ? "High confidence"
+              ? t(language, "highConf")
               : analysis.confidence >= 0.5
-                ? "Medium confidence"
-                : "Low confidence"}
+                ? t(language, "medConf")
+                : t(language, "lowConf")}
           </span>
           <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-sage-100 dark:bg-navy-600 text-sage-500 dark:text-sage-300 flex items-center gap-1">
             <Timer className="w-3 h-3" />
@@ -62,7 +63,7 @@ export default function ResultCards({ response, language, onReset }: Props) {
         <div className="bg-accent-50 dark:bg-accent-900/20 border border-accent-200 dark:border-accent-800/30 rounded-2xl px-5 py-3 flex items-center gap-2.5">
           <Clock className="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0" />
           <p className="text-sm text-accent-800 dark:text-accent-300 font-semibold">
-            Deadline: {analysis.deadline}
+            {t(language, "deadline")}: {analysis.deadline}
           </p>
         </div>
       )}
@@ -73,19 +74,20 @@ export default function ResultCards({ response, language, onReset }: Props) {
         <ActionCard
           actions={analysis.required_actions}
           itemsNeeded={analysis.items_needed}
+          language={language}
         />
         {analysis.reply_needed && (
-          <ReplyCard draft={analysis.reply_draft} />
+          <ReplyCard draft={analysis.reply_draft} language={language} />
         )}
       </div>
 
       {/* Evidence */}
       {analysis.evidence.length > 0 && (
-        <EvidenceChips evidence={analysis.evidence} />
+        <EvidenceChips evidence={analysis.evidence} language={language} />
       )}
 
       {/* Audio */}
-      {audio_url && <AudioButton url={audio_url} />}
+      {audio_url && <AudioButton url={audio_url} language={language} />}
     </div>
   );
 }

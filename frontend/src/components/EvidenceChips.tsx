@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { ShieldCheck, ChevronDown, ChevronUp } from "lucide-react";
 import type { EvidenceItem } from "../types/notice";
+import { t } from "../i18n/translations";
 
 interface Props {
   evidence: EvidenceItem[];
+  language: string;
 }
 
-export default function EvidenceChips({ evidence }: Props) {
+export default function EvidenceChips({ evidence, language }: Props) {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -18,7 +20,7 @@ export default function EvidenceChips({ evidence }: Props) {
         <div className="flex items-center gap-2.5">
           <ShieldCheck className="w-5 h-5 text-navy-300 dark:text-sage-400" />
           <span className="text-sm font-semibold text-navy-500 dark:text-sage-200">
-            Evidence ({evidence.length} sources)
+            {t(language, "evidence")} ({evidence.length} {t(language, "sources")})
           </span>
         </div>
         {expanded ? (

@@ -1,12 +1,14 @@
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { Upload, Camera, FileText } from "lucide-react";
+import { t } from "../i18n/translations";
 
 interface Props {
   onFile: (file: File) => void;
+  language: string;
 }
 
-export default function UploadZone({ onFile }: Props) {
+export default function UploadZone({ onFile, language }: Props) {
   const onDrop = useCallback(
     (accepted: File[]) => {
       if (accepted.length > 0) onFile(accepted[0]);
@@ -48,14 +50,14 @@ export default function UploadZone({ onFile }: Props) {
         </div>
         <p className="text-lg font-semibold text-navy-600 dark:text-sage-100 mb-1.5">
           {isDragActive
-            ? "Drop your school notice here"
-            : "Upload a school notice"}
+            ? t(language, "uploadDragTitle")
+            : t(language, "uploadTitle")}
         </p>
         <p className="text-sm text-sage-500 dark:text-sage-400">
-          Drag & drop a photo, scan, or PDF — or click to browse
+          {t(language, "uploadDesc")}
         </p>
         <p className="text-xs text-sage-400 dark:text-sage-500 mt-2.5">
-          Supports JPG, PNG, WebP, PDF &middot; Max 10 MB
+          {t(language, "uploadFormats")}
         </p>
       </div>
     </div>

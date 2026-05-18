@@ -1,11 +1,13 @@
 import { useState, useRef } from "react";
 import { Volume2, VolumeX, Loader2 } from "lucide-react";
+import { t } from "../i18n/translations";
 
 interface Props {
   url: string;
+  language: string;
 }
 
-export default function AudioButton({ url }: Props) {
+export default function AudioButton({ url, language }: Props) {
   const [playing, setPlaying] = useState(false);
   const [loading, setLoading] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -54,7 +56,7 @@ export default function AudioButton({ url }: Props) {
         ) : (
           <Volume2 className="w-4 h-4" />
         )}
-        {playing ? "Stop Reading" : "Read Aloud"}
+        {playing ? t(language, "stopReading") : t(language, "readAloud")}
       </button>
     </div>
   );

@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import LanguagePicker from "./LanguagePicker";
 import { School, Shield, Moon, Sun } from "lucide-react";
+import { t } from "../i18n/translations";
 
 interface Props {
   children: ReactNode;
@@ -24,7 +25,7 @@ export default function Layout({ children, language, onLanguageChange, dark, onT
                 SchoolBridge
               </h1>
               <p className="text-xs text-sage-500 dark:text-sage-400 leading-tight">
-                Understand every school notice
+                {t(language, "subtitle")}
               </p>
             </div>
           </div>
@@ -53,8 +54,7 @@ export default function Layout({ children, language, onLanguageChange, dark, onT
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-center gap-1.5 text-xs text-sage-400 dark:text-sage-500">
           <Shield className="w-3 h-3" />
           <span>
-            Powered by Gemma 4 &middot; Running locally via Ollama &middot; Your
-            data never leaves your computer
+            {t(language, "footer")}
           </span>
         </div>
       </footer>

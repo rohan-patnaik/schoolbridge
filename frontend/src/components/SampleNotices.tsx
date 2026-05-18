@@ -1,4 +1,5 @@
 import { FileText } from "lucide-react";
+import { t } from "../i18n/translations";
 
 const SAMPLES = [
   {
@@ -85,9 +86,10 @@ Questions? Contact the Food Services office at 555-0189 or cafeteria@washington.
 
 interface Props {
   onSelect: (file: File) => void;
+  language: string;
 }
 
-export default function SampleNotices({ onSelect }: Props) {
+export default function SampleNotices({ onSelect, language }: Props) {
   const handleSelect = (text: string, name: string) => {
     const blob = new Blob([text], { type: "text/plain" });
     const file = new File([blob], `${name.toLowerCase().replace(/\s+/g, "-")}.txt`, {
@@ -99,7 +101,7 @@ export default function SampleNotices({ onSelect }: Props) {
   return (
     <div className="max-w-2xl mx-auto">
       <p className="text-sm font-medium text-sage-500 dark:text-sage-400 text-center mb-4">
-        Or try a sample notice
+        {t(language, "orTrySample")}
       </p>
       <div className="grid gap-3 sm:grid-cols-3">
         {SAMPLES.map((sample) => (

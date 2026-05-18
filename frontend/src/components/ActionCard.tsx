@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { CheckSquare, Square, Package, Calendar } from "lucide-react";
 import type { ActionItem } from "../types/notice";
+import { t } from "../i18n/translations";
 
 interface Props {
   actions: ActionItem[];
   itemsNeeded: string[];
+  language: string;
 }
 
-export default function ActionCard({ actions, itemsNeeded }: Props) {
+export default function ActionCard({ actions, itemsNeeded, language }: Props) {
   const [checked, setChecked] = useState<Set<number>>(new Set());
 
   const toggle = (i: number) => {
@@ -26,13 +28,13 @@ export default function ActionCard({ actions, itemsNeeded }: Props) {
           <CheckSquare className="w-3.5 h-3.5 text-white" />
         </div>
         <h2 className="font-semibold text-green-800 dark:text-green-300">
-          What You Need to Do
+          {t(language, "whatYouNeedToDo")}
         </h2>
       </div>
       <div className="px-5 py-4 space-y-3">
         {actions.length === 0 && (
           <p className="text-sage-500 dark:text-sage-400 text-sm">
-            No specific actions required — this is for your information.
+            {t(language, "noActions")}
           </p>
         )}
         {actions.map((action, i) => (
@@ -70,7 +72,7 @@ export default function ActionCard({ actions, itemsNeeded }: Props) {
           <div className="pt-3 border-t border-sage-200/60 dark:border-navy-600/40">
             <p className="text-xs font-semibold text-sage-500 dark:text-sage-400 uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
               <Package className="w-3.5 h-3.5" />
-              Items to gather
+              {t(language, "itemsToGather")}
             </p>
             <div className="flex flex-wrap gap-2">
               {itemsNeeded.map((item, i) => (
