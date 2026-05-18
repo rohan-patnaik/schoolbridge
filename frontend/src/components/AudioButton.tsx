@@ -1,0 +1,57 @@
+import { useState, useRef } from "react";
+import { Volume2, VolumeX, Loader2 } from "lucide-react";
+
+interface Props {
+  url: string;
+}
+
+export default function AudioButton({ url }: Props) {
+  const [playing, setPlaying] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const toggle = () => {
+    if (playing && audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+      setPlaying(false);
+      return;
+    }
+
+    setLoading(true);
+    const audio = new Audio(url);
+    audioRef.current = audio;
+
+    audio.oncanplaythrough = () => {
+      setLoading(false);
+      setPlaying(true);
+      audio.play();
+    };
+
+    audio.onended = () => setPlaying(false);
+    audio.onerror = () => {
+      setLoading(false);
+      setPlaying(false);
+    };
+
+    audio.load();
+  };
+
+  return (
+    <div className="flex justify-center">
+      <button
+        onClick={toggle}
+        className="flex items-center gap-2 px-5 py-2.5 bg-brand-600 text-white rounded-xl hover:bg-brand-700 transition-colors shadow-sm"
+      >
+        {loading ? (
+          <Loader2 className="w-5 h-5 animate-spin" />
+        ) : playing ? (
+          <VolumeX className="w-5 h-5" />
+        ) : (
+          <Volume2 className="w-5 h-5" />
+        )}
+        {playing ? "Stop Reading" : "Read Aloud"}
+      </button>
+    </div>
+  );
+}

@@ -1,0 +1,132 @@
+[
+  {
+    "id": "test_001",
+    "category": "field_trip_permission",
+    "notice_text": "Dear Parent/Guardian,\n\n3rd grade students at Roosevelt Primary will be visiting the Natural History Museum on 2025-04-15. The bus departs at 9:00 AM and returns by 2:30 PM.\n\nA fee of $10.00 covers admission and transportation. Please send cash or check payable to Roosevelt Primary PTA.\n\nReturn the signed permission slip by 2025-04-08. Students without signed forms will remain at school.\n\nQuestions? Contact Ms. Chen at ext. 215.",
+    "expected": {
+      "doc_type": "field_trip_permission",
+      "urgency": "high",
+      "deadline": "2025-04-08",
+      "required_actions_count": 3,
+      "reply_needed": true,
+      "key_actions": ["sign permission slip", "pay $10"]
+    }
+  },
+  {
+    "id": "test_002",
+    "category": "immunization_reminder",
+    "notice_text": "IMPORTANT: Immunization Requirements\n\nAll students at Hamilton Academy must have current immunization records on file by 2025-09-01.\n\nRequired: DTaP (5 doses), Polio (4 doses), MMR (2 doses), Varicella (2 doses), Hepatitis B (3 doses).\n\nStudents without complete records will not be permitted to attend classes.\n\nFree clinics at Oak Street Health Center every Tuesday 9 AM-4 PM.\n\nSubmit records to school nurse, Room 201.",
+    "expected": {
+      "doc_type": "immunization_reminder",
+      "urgency": "high",
+      "deadline": "2025-09-01",
+      "required_actions_count": 2,
+      "reply_needed": false,
+      "key_actions": ["schedule vaccination", "submit records"]
+    }
+  },
+  {
+    "id": "test_003",
+    "category": "event_announcement",
+    "notice_text": "Jefferson Academy — Spring Concert Invitation\n\nDear Families,\n\nYou are invited to our annual Spring Concert!\n\nDate: 2025-05-10\nTime: 6:30 PM\nLocation: Jefferson Academy auditorium\n\nAll family members are welcome. Light refreshments will be served.\n\nNo RSVP required. Parking available in main lot.\n\nMs. Thompson, Event Coordinator",
+    "expected": {
+      "doc_type": "event_announcement",
+      "urgency": "low",
+      "deadline": null,
+      "required_actions_count": 0,
+      "reply_needed": false,
+      "key_actions": []
+    }
+  },
+  {
+    "id": "test_004",
+    "category": "fee_notice",
+    "notice_text": "Franklin Elementary — Activity Fee Payment Notice\n\nDear Parent/Guardian,\n\nThe activity fee payment of $15.00 is due by 2025-03-20.\n\nPayment methods: cash or check payable to Franklin Elementary, or online.\n\nFee waiver applications available in the main office. Free/reduced lunch recipients may qualify for automatic fee waivers.\n\nLate payments may result in inability to participate in activities.\n\nContact office at 555-3847.",
+    "expected": {
+      "doc_type": "fee_notice",
+      "urgency": "high",
+      "deadline": "2025-03-20",
+      "required_actions_count": 1,
+      "reply_needed": false,
+      "key_actions": ["pay $15"]
+    }
+  },
+  {
+    "id": "test_005",
+    "category": "schedule_change",
+    "notice_text": "Monroe School Schedule Change Notice\n\nDear Families,\n\nPlease be advised:\n\nDate: 2025-02-14\nChange: Early Dismissal — 1:00 PM\nReason: Teacher Professional Development\n\nBus schedules will be adjusted accordingly.\n\nMonroe School Administration",
+    "expected": {
+      "doc_type": "schedule_change",
+      "urgency": "medium",
+      "deadline": "2025-02-14",
+      "required_actions_count": 1,
+      "reply_needed": false,
+      "key_actions": ["arrange pickup"]
+    }
+  },
+  {
+    "id": "test_006",
+    "category": "attendance_warning",
+    "notice_text": "Attendance Concern — Adams Elementary\n\nDear Parent/Guardian,\n\nYour child has accumulated 9 absences this semester, exceeding our threshold of 7.\n\nState law requires reporting excessive absences. We would like to schedule a meeting.\n\nPlease contact the attendance office at 555-2918 or reply within 5 business days.\n\nIf medical, please provide healthcare documentation.\n\nMrs. Martinez, Attendance Coordinator",
+    "expected": {
+      "doc_type": "attendance_warning",
+      "urgency": "high",
+      "deadline": null,
+      "required_actions_count": 3,
+      "reply_needed": true,
+      "key_actions": ["contact attendance office", "schedule meeting"]
+    }
+  },
+  {
+    "id": "test_007",
+    "category": "meeting_invitation",
+    "notice_text": "Parent-Teacher Conference — Madison School\n\nDear Parent/Guardian,\n\nYou are invited to a parent-teacher conference with Mr. Lee.\n\nDate: 2025-03-25\nTime: 3:30 PM\nLocation: Madison School, Room 112\n\nWe will discuss your child's academic progress.\n\nIf this time doesn't work, contact us to reschedule.\n\nTranslation services available with 48 hours notice.\n\nMr. Lee",
+    "expected": {
+      "doc_type": "meeting_invitation",
+      "urgency": "medium",
+      "deadline": "2025-03-25",
+      "required_actions_count": 2,
+      "reply_needed": true,
+      "key_actions": ["confirm or reschedule", "request translation if needed"]
+    }
+  },
+  {
+    "id": "test_008",
+    "category": "fundraising",
+    "notice_text": "Jackson Primary Bake Sale Fundraiser\n\nDear Families,\n\nOur annual bake sale is here! Proceeds support library book purchases.\n\nHow to participate:\n- Donation forms attached\n- Return by 2025-04-01\n- All items delivered to school\n\nParticipation is completely voluntary.\n\nQuestions? Contact PTA at pta@jacksonprimary.edu.\n\nJackson Primary PTA",
+    "expected": {
+      "doc_type": "fundraising",
+      "urgency": "low",
+      "deadline": "2025-04-01",
+      "required_actions_count": 1,
+      "reply_needed": false,
+      "key_actions": ["return donation form"]
+    }
+  },
+  {
+    "id": "test_009",
+    "category": "lunch_program",
+    "notice_text": "Free and Reduced-Price Meal Program Application\n\nDear Parent/Guardian,\n\nLincoln Elementary participates in the National School Lunch Program.\n\nHousehold of 4: Free meals under $38,818 / Reduced under $55,266 annually.\n\nHow to apply:\n1. Complete the attached application\n2. Return to cafeteria office by 2025-08-25\n3. Notification within 10 business days\n\nLast year's application expires September 30, 2025. You MUST reapply.\n\nFood Services: 555-0189",
+    "expected": {
+      "doc_type": "lunch_program",
+      "urgency": "medium",
+      "deadline": "2025-08-25",
+      "required_actions_count": 2,
+      "reply_needed": false,
+      "key_actions": ["complete application", "return to cafeteria"]
+    }
+  },
+  {
+    "id": "test_010",
+    "category": "health_notice",
+    "notice_text": "HEALTH ALERT — Head Lice Reported\n\nDear Parents,\n\nA case of head lice has been reported in your child's classroom at Washington Middle School.\n\nPlease check your child's hair tonight. Look for small tan/brown insects or tiny white eggs (nits) near the scalp.\n\nIf you find lice:\n- Treat with over-the-counter lice shampoo\n- Wash bedding and clothing in hot water\n- Notify the school nurse at 555-4421\n\nYour child may return to school after treatment. No need to stay home for nits only.\n\nNurse Davis",
+    "expected": {
+      "doc_type": "health_notice",
+      "urgency": "high",
+      "deadline": null,
+      "required_actions_count": 3,
+      "reply_needed": false,
+      "key_actions": ["check child's hair", "treat if found", "notify school"]
+    }
+  }
+]

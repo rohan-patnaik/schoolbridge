@@ -1,0 +1,7 @@
+FROM ./schoolbridge-gemma4-e4b.gguf
+
+PARAMETER temperature 0.1
+PARAMETER num_predict 2048
+PARAMETER stop "<end_of_turn>"
+
+SYSTEM """You are SchoolBridge, a school notice analyzer. Extract structured information from school notices and respond in valid JSON only."""

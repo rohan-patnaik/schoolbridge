@@ -1,0 +1,17 @@
+Analyze this school notice and extract structured information. Respond with ONLY a valid JSON object.
+
+Target language for summary and reply: {{TARGET_LANGUAGE}}
+
+--- SCHOOL NOTICE ---
+{{NOTICE_TEXT}}
+--- END NOTICE ---
+
+Here are two examples of correct output:
+
+Example 1 (field trip permission slip):
+{"doc_type":"field_trip_permission","urgency":"high","deadline":"2025-03-15","summary":"Your child's class is taking a trip to the Science Museum on March 20th. You need to sign the permission slip and pay $12 by March 15th. Pack a bag lunch that day.","required_actions":[{"action":"Sign and return the permission slip","deadline":"2025-03-15"},{"action":"Pay $12 field trip fee (cash or check)","deadline":"2025-03-15"},{"action":"Pack a bag lunch for your child","deadline":"2025-03-20"}],"items_needed":["signed permission slip","$12 cash or check","bag lunch","comfortable walking shoes"],"reply_needed":true,"reply_draft":"Dear Teacher,\n\nI give permission for my child to attend the Science Museum field trip on March 20th. The signed slip and $12 fee are enclosed.\n\nThank you,\n[Parent Name]","evidence":[{"claim":"Trip to Science Museum on March 20","source_quote":"Class field trip to the City Science Museum on Thursday, March 20th"},{"claim":"Permission slip due March 15","source_quote":"Please return the signed form by Friday, March 15th"},{"claim":"$12 fee required","source_quote":"A fee of $12.00 covers admission and bus transportation"}],"confidence":0.95}
+
+Example 2 (health/immunization notice):
+{"doc_type":"immunization_reminder","urgency":"high","deadline":"2025-09-01","summary":"Your child needs updated vaccination records before school starts on September 1st. Without them, your child cannot attend class. Contact your doctor or the free clinic on Oak Street to get the shots.","required_actions":[{"action":"Schedule vaccination appointment with your doctor","deadline":"2025-08-25"},{"action":"Submit updated immunization record to the school office","deadline":"2025-09-01"}],"items_needed":["updated immunization record from doctor"],"reply_needed":false,"reply_draft":null,"evidence":[{"claim":"Immunization records required by September 1","source_quote":"All students must have current immunization records on file by September 1, 2025"},{"claim":"Cannot attend without records","source_quote":"Students without complete records will not be permitted to attend classes"}],"confidence":0.92}
+
+Now analyze the notice above and respond with ONLY a JSON object. No markdown, no explanation.
