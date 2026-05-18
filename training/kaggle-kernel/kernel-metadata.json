@@ -1,0 +1,14 @@
+{
+  "id": "rohanpatnaik/schoolbridge-gemma-4-fine-tuning",
+  "title": "schoolbridge-gemma-4-fine-tuning",
+  "code_file": "train_notebook.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": ["rohanpatnaik/schoolbridge-training-data"],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "machine_shape": "NvidiaTeslaT4"
+}

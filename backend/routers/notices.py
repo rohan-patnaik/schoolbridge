@@ -38,7 +38,8 @@ async def process_notice(
     audio_url = None
     if analysis.summary:
         audio_filename = await generate_audio(analysis.summary, target_language)
-        audio_url = f"/api/audio/{audio_filename}"
+        if audio_filename:
+            audio_url = f"/api/audio/{audio_filename}"
 
     elapsed_ms = int((time.perf_counter() - start) * 1000)
 

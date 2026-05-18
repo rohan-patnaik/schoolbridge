@@ -15,7 +15,7 @@ VOICE_MAP = {
 }
 
 
-async def generate_audio(text: str, language: str) -> str:
+async def generate_audio(text: str, language: str) -> str | None:
     os.makedirs(AUDIO_CACHE_DIR, exist_ok=True)
     text_hash = hashlib.md5(f"{language}:{text}".encode()).hexdigest()
     filename = f"{text_hash}.mp3"
@@ -24,7 +24,11 @@ async def generate_audio(text: str, language: str) -> str:
     if os.path.exists(filepath):
         return filename
 
-    voice = VOICE_MAP.get(language, VOICE_MAP["en"])
-    communicate = edge_tts.Communicate(text, voice)
-    await communicate.save(filepath)
-    return filename
+    try:
+        voice = VOICE_MAP.get(language, VOICE_MAP["en"])
+        communicate = edge_tts.Communicate(text, voice)
+        await communicate.save(filepath)
+        return filename
+    except Exception as e:
+        print(f"TTS generation failed (non-fatal): {e}")
+        return None

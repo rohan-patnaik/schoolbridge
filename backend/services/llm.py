@@ -59,7 +59,7 @@ async def analyze_notice(
     messages = _build_messages(ocr_text, target_language, base64_image)
 
     for attempt in range(MAX_RETRIES + 1):
-        async with httpx.AsyncClient(timeout=120.0) as client:
+        async with httpx.AsyncClient(timeout=300.0) as client:
             resp = await client.post(
                 f"{OLLAMA_BASE_URL}/api/chat",
                 json={
