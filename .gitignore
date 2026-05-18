@@ -40,3 +40,9 @@ training/checkpoints/
 
 # Eval results
 eval/results/
+
+# Claude
+.claude/
+
+# Kaggle cache
+training/kaggle-output/unsloth_compiled_cache/
