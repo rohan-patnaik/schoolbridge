@@ -11,3 +11,15 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Dark mode card backgrounds */
+.dark .card-surface {
+  background-color: rgb(28, 40, 48); /* navy-700 */
+  border-color: rgba(74, 104, 120, 0.3); /* navy-400/30 */
+}
+
+/* Dark mode input background for reply drafts */
+.dark .draft-surface {
+  background-color: rgb(20, 29, 35); /* navy-800 */
+  border-color: rgba(74, 104, 120, 0.2);
+}

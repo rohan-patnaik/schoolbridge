@@ -98,7 +98,7 @@ export default function SampleNotices({ onSelect }: Props) {
 
   return (
     <div className="max-w-2xl mx-auto">
-      <p className="text-sm font-medium text-sage-500 text-center mb-4">
+      <p className="text-sm font-medium text-sage-500 dark:text-sage-400 text-center mb-4">
         Or try a sample notice
       </p>
       <div className="grid gap-3 sm:grid-cols-3">
@@ -106,17 +106,17 @@ export default function SampleNotices({ onSelect }: Props) {
           <button
             key={sample.name}
             onClick={() => handleSelect(sample.text, sample.name)}
-            className="text-left p-4 bg-white border border-sage-300/50 rounded-2xl
-                       hover:border-accent-300 hover:shadow-card-hover
+            className="text-left p-4 bg-white dark:bg-navy-800 border border-sage-300/50 dark:border-navy-600/50 rounded-2xl
+                       hover:border-accent-300 dark:hover:border-accent-500/50 hover:shadow-card-hover
                        transition-all duration-200 group"
           >
-            <div className="w-8 h-8 bg-sage-100 rounded-lg flex items-center justify-center mb-3 group-hover:bg-accent-50 transition-colors">
-              <FileText className="w-4 h-4 text-sage-400 group-hover:text-accent-500 transition-colors" />
+            <div className="w-8 h-8 bg-sage-100 dark:bg-navy-700 rounded-lg flex items-center justify-center mb-3 group-hover:bg-accent-50 dark:group-hover:bg-accent-900/30 transition-colors">
+              <FileText className="w-4 h-4 text-sage-400 dark:text-sage-500 group-hover:text-accent-500 transition-colors" />
             </div>
-            <p className="text-sm font-semibold text-navy-600 group-hover:text-accent-600 transition-colors">
+            <p className="text-sm font-semibold text-navy-600 dark:text-sage-100 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">
               {sample.name}
             </p>
-            <p className="text-xs text-sage-400 mt-1 leading-relaxed">
+            <p className="text-xs text-sage-400 dark:text-sage-500 mt-1 leading-relaxed">
               {sample.description}
             </p>
           </button>

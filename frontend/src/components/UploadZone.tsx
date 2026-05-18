@@ -30,31 +30,31 @@ export default function UploadZone({ onFile }: Props) {
         {...getRootProps()}
         className={`relative border-2 border-dashed rounded-3xl p-14 text-center cursor-pointer transition-all duration-200 ${
           isDragActive
-            ? "border-accent-500 bg-accent-50 scale-[1.01]"
-            : "border-sage-300 hover:border-accent-400 hover:bg-white hover:shadow-card-hover"
+            ? "border-accent-500 bg-accent-50 dark:bg-accent-900/20 scale-[1.01]"
+            : "border-sage-300 dark:border-navy-500 hover:border-accent-400 hover:bg-white dark:hover:bg-navy-800 hover:shadow-card-hover"
         }`}
       >
         <input {...getInputProps()} />
         <div className="flex justify-center gap-4 mb-5">
-          <div className="w-12 h-12 bg-sage-100 rounded-xl flex items-center justify-center group-hover:bg-accent-50 transition-colors">
-            <Camera className="w-5 h-5 text-navy-300" />
+          <div className="w-12 h-12 bg-sage-100 dark:bg-navy-700 rounded-xl flex items-center justify-center">
+            <Camera className="w-5 h-5 text-navy-300 dark:text-sage-400" />
           </div>
-          <div className="w-12 h-12 bg-accent-100 rounded-xl flex items-center justify-center">
-            <Upload className="w-5 h-5 text-accent-600" />
+          <div className="w-12 h-12 bg-accent-100 dark:bg-accent-900/30 rounded-xl flex items-center justify-center">
+            <Upload className="w-5 h-5 text-accent-600 dark:text-accent-400" />
           </div>
-          <div className="w-12 h-12 bg-sage-100 rounded-xl flex items-center justify-center">
-            <FileText className="w-5 h-5 text-navy-300" />
+          <div className="w-12 h-12 bg-sage-100 dark:bg-navy-700 rounded-xl flex items-center justify-center">
+            <FileText className="w-5 h-5 text-navy-300 dark:text-sage-400" />
           </div>
         </div>
-        <p className="text-lg font-semibold text-navy-600 mb-1.5">
+        <p className="text-lg font-semibold text-navy-600 dark:text-sage-100 mb-1.5">
           {isDragActive
             ? "Drop your school notice here"
             : "Upload a school notice"}
         </p>
-        <p className="text-sm text-sage-500">
+        <p className="text-sm text-sage-500 dark:text-sage-400">
           Drag & drop a photo, scan, or PDF — or click to browse
         </p>
-        <p className="text-xs text-sage-400 mt-2.5">
+        <p className="text-xs text-sage-400 dark:text-sage-500 mt-2.5">
           Supports JPG, PNG, WebP, PDF &middot; Max 10 MB
         </p>
       </div>

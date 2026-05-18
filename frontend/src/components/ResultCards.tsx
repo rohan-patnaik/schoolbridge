@@ -13,9 +13,9 @@ interface Props {
 }
 
 const URGENCY_STYLES = {
-  low: "bg-green-50 text-green-700 border-green-200",
-  medium: "bg-accent-50 text-accent-700 border-accent-200",
-  high: "bg-red-50 text-red-700 border-red-200",
+  low: "bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400 border-green-200 dark:border-green-800/40",
+  medium: "bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-400 border-accent-200 dark:border-accent-800/40",
+  high: "bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-400 border-red-200 dark:border-red-800/40",
 };
 
 const URGENCY_LABELS = {
@@ -32,7 +32,7 @@ export default function ResultCards({ response, language, onReset }: Props) {
     <div className="max-w-3xl mx-auto space-y-5">
       {/* Top bar */}
       <div className="flex items-center justify-between">
-        <button onClick={onReset} className="inline-flex items-center gap-1.5 text-sm text-navy-300 hover:text-navy-500 transition-colors">
+        <button onClick={onReset} className="inline-flex items-center gap-1.5 text-sm text-navy-300 dark:text-sage-400 hover:text-navy-500 dark:hover:text-sage-200 transition-colors">
           <ArrowLeft className="w-4 h-4" />
           Analyze another notice
         </button>
@@ -42,7 +42,7 @@ export default function ResultCards({ response, language, onReset }: Props) {
           >
             {URGENCY_LABELS[urgency]}
           </span>
-          <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-sage-100 text-sage-500 flex items-center gap-1">
+          <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-sage-100 dark:bg-navy-600 text-sage-500 dark:text-sage-300 flex items-center gap-1">
             <Zap className="w-3 h-3" />
             {analysis.confidence >= 0.8
               ? "High confidence"
@@ -50,7 +50,7 @@ export default function ResultCards({ response, language, onReset }: Props) {
                 ? "Medium confidence"
                 : "Low confidence"}
           </span>
-          <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-sage-100 text-sage-500 flex items-center gap-1">
+          <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-sage-100 dark:bg-navy-600 text-sage-500 dark:text-sage-300 flex items-center gap-1">
             <Timer className="w-3 h-3" />
             {(processing_time_ms / 1000).toFixed(1)}s
           </span>
@@ -59,9 +59,9 @@ export default function ResultCards({ response, language, onReset }: Props) {
 
       {/* Deadline banner */}
       {analysis.deadline && (
-        <div className="bg-accent-50 border border-accent-200 rounded-2xl px-5 py-3 flex items-center gap-2.5">
-          <Clock className="w-5 h-5 text-accent-600 flex-shrink-0" />
-          <p className="text-sm text-accent-800 font-semibold">
+        <div className="bg-accent-50 dark:bg-accent-900/20 border border-accent-200 dark:border-accent-800/30 rounded-2xl px-5 py-3 flex items-center gap-2.5">
+          <Clock className="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0" />
+          <p className="text-sm text-accent-800 dark:text-accent-300 font-semibold">
             Deadline: {analysis.deadline}
           </p>
         </div>

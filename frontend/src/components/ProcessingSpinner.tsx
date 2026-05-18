@@ -27,7 +27,7 @@ export default function ProcessingSpinner({ preview }: Props) {
   return (
     <div className="max-w-2xl mx-auto text-center space-y-8">
       {preview && (
-        <div className="mx-auto w-48 h-64 rounded-2xl overflow-hidden shadow-card border border-sage-300/50">
+        <div className="mx-auto w-48 h-64 rounded-2xl overflow-hidden shadow-card border border-sage-300/50 dark:border-navy-600/50">
           <img
             src={preview}
             alt="Uploaded notice"
@@ -39,9 +39,9 @@ export default function ProcessingSpinner({ preview }: Props) {
       <div className="space-y-5">
         <div className="flex items-center justify-center gap-3">
           <Loader2 className="w-6 h-6 text-accent-500 animate-spin" />
-          <CurrentIcon className="w-6 h-6 text-navy-400" />
+          <CurrentIcon className="w-6 h-6 text-navy-400 dark:text-sage-300" />
         </div>
-        <p className="text-lg font-semibold text-navy-600">
+        <p className="text-lg font-semibold text-navy-600 dark:text-sage-100">
           {STEPS[step].label}
         </p>
         <div className="flex justify-center gap-2">
@@ -49,7 +49,7 @@ export default function ProcessingSpinner({ preview }: Props) {
             <div
               key={i}
               className={`h-1.5 w-10 rounded-full transition-all duration-500 ${
-                i <= step ? "bg-accent-500" : "bg-sage-200"
+                i <= step ? "bg-accent-500" : "bg-sage-200 dark:bg-navy-600"
               }`}
             />
           ))}

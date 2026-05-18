@@ -39,7 +39,7 @@ export default function AudioButton({ url }: Props) {
 
   return (
     <div className="flex justify-center">
-      <button onClick={toggle} className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent-500 text-white rounded-xl font-medium shadow-md hover:bg-accent-600 active:bg-accent-700 transition-all text-sm">
+      <button onClick={toggle} className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent-500 dark:bg-accent-600 text-white rounded-xl font-medium shadow-md hover:bg-accent-600 dark:hover:bg-accent-500 active:bg-accent-700 dark:active:bg-accent-700 transition-all text-sm">
         {loading ? (
           <Loader2 className="w-4 h-4 animate-spin" />
         ) : playing ? (
