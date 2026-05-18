@@ -10,11 +10,21 @@ export default function AudioButton({ url }: Props) {
   const [loading, setLoading] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
+  const stop = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.oncanplaythrough = null;
+    audio.onended = null;
+    audio.onerror = null;
+    audio.pause();
+    audioRef.current = null;
+    setPlaying(false);
+    setLoading(false);
+  };
+
   const toggle = () => {
-    if (playing && audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
-      setPlaying(false);
+    if (playing || loading) {
+      stop();
       return;
     }
 
@@ -28,11 +38,8 @@ export default function AudioButton({ url }: Props) {
       audio.play();
     };
 
-    audio.onended = () => setPlaying(false);
-    audio.onerror = () => {
-      setLoading(false);
-      setPlaying(false);
-    };
+    audio.onended = () => stop();
+    audio.onerror = () => stop();
 
     audio.load();
   };
